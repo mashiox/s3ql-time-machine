@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+# Install boto3
+RUN pip install --no-cache-dir boto3
+
+WORKDIR /app
+COPY s3ql_version_id.py /app/s3ql_version_id.py
+RUN chmod +x /app/s3ql_version_id.py
+
+ENTRYPOINT ["/app/s3ql_version_id.py"]
